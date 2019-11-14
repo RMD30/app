@@ -1,0 +1,43 @@
+<body style="margin: 0 auto;">
+    <div class="wrapper">
+        <h2 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color:darkblue; text-align: center; background-color: aliceblue; padding: 5px">
+           + Rhack Matthew T. Dino +
+        </h2>
+
+            <div class="inventoryTable" style="padding: 2%;">
+            <form #user="ngForm" style="padding: 2%;">
+                <label style="color: rgb(78, 146, 206); font-size: 20px; font-weight: bold; font-family: 'Times New Roman', Times, serif; text-align: left;">
+                    Name*
+                </label><br>
+                    <input class="input" type="text" placeholder="Name"  required #username="ngModel" [class.invalid]="username.invalid && username.touched" [(ngModel)]= "userName" name="userName"><br>
+        
+                <label style="color: rgb(78, 146, 206); font-size: 20px; font-weight: bold; font-family: 'Times New Roman', Times, serif; text-align: left;">
+                    Age*
+                </label><br>
+                    <input class="input" type="number" placeholder="Age" required #userage="ngModel" [class.invalid]="userage.invalid && userage.touched" [(ngModel)]= "userAge" name="userAge" ><br><br>
+        
+                <button id="btn" (click)="addUser()" *ngIf="user.valid" >Submit</button>
+            </form>     
+            <br>
+            <br>
+
+            <table>
+                <tr>
+                    <th>User Name</th>
+                    <th>Age</th>
+                    <th>Action</th>
+                </tr>
+                
+                <tr *ngFor="let user of users">
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.age }}</td>
+                    
+                    <td>
+                        <button  id="action" (click)="updateUser(user._id)">Update</button>
+                        |<button id="action" (click)="deleteUser(user._id)" style="margin-left: 1%">Delete</button>
+                    </td>
+                </tr>
+            </table>  
+            </div> 
+    </div>
+</body>
